@@ -4,14 +4,20 @@
 <link rel="stylesheet" href="style.css" type="text/css">
 <style type="text/css">
 #data {
+    margin: 0 auto;
     width: 300px;
     height: 200px;
-    background-color: #336699;
-    border: 5px solid red;
+    background-color: #567CA7;
+    border: 5px solid #333333;
     -moz-border-radius: 20px;
     -webkit-border-radius: 20px;
     border-radius: 20px;
     padding:10px;
+    -webkit-box-shadow: inset 10px 10px 10px  ;    
+    box-shadow: inset 10px 10px 10px  ;
+    -moz-box-shadow:    inset 0 0 5px #000000;
+    -webkit-box-shadow: inset 0 0 5px #000000;
+    box-shadow:         inset 0 0 5px #000000;
 }
 </style>
 </head>
@@ -24,7 +30,9 @@
 <br>
 <div id="maincontent">
 <center><p style="font-size:30px;line-height:0px;">Points Calculator.</p></center>
-<div id="data">Hey.</div>
+<br><div id="data">
+<span><center>Hey.</center><br><input type="text"></span>
+</div>
 </div>
 </p></div>
 </body>
