@@ -9,9 +9,19 @@
     height: 100px;
 	border: 1px solid black;
 	padding: 20px;
-	margin
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
-#points 
+.calculate { 
+	background-color: white; 
+	border:1px solid black;
+	padding: 7px; 
+	padding-top: 4px;
+	padding-bottom: 4px;
+	font-size:15px;
+	font-family: 'Cabin Condensed', sans-serif;
+
+}
 </style>
 </head>
 <body>
@@ -25,7 +35,7 @@
 <div id="maincontent">
 <center><p style="font-size:30px;line-height:0px;">Points Calculator.</p></center>
 <br><center><p style="margin:5px;font-size:16px;">Points:</p></center>
-<div id="points"><table><tr>
+<table id="points"><tr>
 <td><center>X1</center></td>
 <td><center>Y1</center></td></tr>
 <tr><td><input type="text" /></td
@@ -34,10 +44,13 @@
 <td><center>Y2</center></td>
 </tr><td><input type="text" /></td>
 <td><input type="text" /></td>
-</tr></table></div>
+</tr><tr><td>
+<center><input type="button" class="calculate" value="Calculate."/></center>
+</td></tr></table>
+
 
 <br><center><p style="margin:5px;font-size:16px;">Answers:</p></center>
-<div id="answers"><table><tr>
+<table id="answers"><tr>
 <td><center>X1</center></td>
 <td><center>Y1</center></td></tr>
 <tr><td><input type="text" /></td
@@ -46,7 +59,7 @@
 <td><center>Y2</center></td>
 </tr><td><input type="text" /></td>
 <td><input type="text" /></td>
-</tr></table></div>
+</tr></table>
 </p></div>
 </body>
 </html>
