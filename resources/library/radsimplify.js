@@ -9,5 +9,5 @@ function radsimplify(number) {
 			d = d + 1;
 		}
 	}
-	return (number + "\u221A" + outside);
+	return (number + "," + outside);
 }
