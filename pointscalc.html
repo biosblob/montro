@@ -4,15 +4,32 @@
 <link rel="stylesheet" href="resources/style.css" type="text/css">
 <script src="resources/library/distance.js" type="text/javascript"></script>
 <script src="resources/library/radsimplify.js" type="text/javascript"></script>
+<script src="resources/Ratio.js" type="text/javascript"></script>
 <script type="text/javascript">
 <!--
 function calculate() {
-	var x1 = document.getElementById('x1').value;
+	// Get values
+    var x1 = document.getElementById('x1').value;
 	var x2 = document.getElementById('x2').value;
 	var y1 = document.getElementById('y1').value;
 	var y2 = document.getElementById('y2').value;
-	var distance = distance(x1, y1, x2, y2);
-	alert(distance);
+    var length = distance(x1, y1, x2, y2);
+    var matrixlength = length.split(",");
+    if (matrixlength[0] == "0") {
+        length = 0;
+    }
+    else if (matrixlength[0] == "1") { 
+        length = "/u221A" + matrixlength[1];
+    }
+    else if (matrixlength[1] == "1") {
+        length = matrixlength[0];
+    }
+    else {
+        declength = Ratio.parse(matrixlength[0] * Math.sqrt(matrixlength[1])).reduce().toString();
+        length = matrixlength[0] + "\u221A" + matrixlength[1];
+    }
+    //NOTE: IF INNERRADICAL IS ONE, DON'T CALCULATE FRACTIONAL VALUES AND DECIMAL VALUES. USE CASE SWITCH STATEMENT
+    document.getElementById('distance').value = length + " (" + declength + ", " + (Math.round((matrixlength[0] * Math.sqrt(matrixlength[1])) * 100) / 100) + ")";
 }
 -->
 </script>
