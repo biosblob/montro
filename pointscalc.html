@@ -9,27 +9,40 @@
 <!--
 function calculate() {
 	// Get values
+	/* BLOCK COMMENT: FRACTION SIMPLFYING CODE FROM MONTRO:
+	var Div,frac;
+	Div=1;
+	frac=frac.split('/');
+	for (zxc0=1;zxc0<100;zxc0++){
+	if (frac[0]%zxc0==0&&frac[1]%zxc0==0){
+	Div=zxc0;
+	*/
     var x1 = document.getElementById('x1').value;
 	var x2 = document.getElementById('x2').value;
 	var y1 = document.getElementById('y1').value;
 	var y2 = document.getElementById('y2').value;
     var length = distance(x1, y1, x2, y2);
     var matrixlength = length.split(",");
-    if (matrixlength[0] == "0") {
-        length = 0;
-    }
-    else if (matrixlength[0] == "1") { 
-        length = "/u221A" + matrixlength[1];
-    }
-    else if (matrixlength[1] == "1") {
-        length = matrixlength[0];
-    }
-    else {
-        declength = Ratio.parse(matrixlength[0] * Math.sqrt(matrixlength[1])).reduce().toString();
-        length = matrixlength[0] + "\u221A" + matrixlength[1];
-    }
-    //NOTE: IF INNERRADICAL IS ONE, DON'T CALCULATE FRACTIONAL VALUES AND DECIMAL VALUES. USE CASE SWITCH STATEMENT
-    document.getElementById('distance').value = length + " (" + declength + ", " + (Math.round((matrixlength[0] * Math.sqrt(matrixlength[1])) * 100) / 100) + ")";
+	switch (matrixlength[0]) {
+		case 0:
+			length = 0;
+			document.getElementsById('distance').value = 0;
+		case 1:
+				length = "\u221A" + matrixlength[1];
+				document.getElementById('distance').value = length;
+		default:
+			if (matrixlength[1] == 1) {
+				document.getElementById('distance').value = matrixlength[0];
+			}
+			else {
+				length = matrixlength[0] + "\u221A" + matrixlength[1];
+				alert(matrixlength[0]);
+				alert(matrixlength[1]);
+				decvalue = (matrixlength[0] * Math.sqrt(matrixlength[1]));
+				fracvalue = Ratio.parse(decvalue).reduce().toString();
+				document.getElementById('distance').value = length + " (" + (Math.round(decvalue * 100) / 100) + ", " + fracvalue + ")";
+			}
+	}
 }
 -->
 </script>
