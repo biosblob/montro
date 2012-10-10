@@ -4,13 +4,13 @@
   font-family: 'Cabin Condensed';
   font-style: normal;
   font-weight: 400;
-  src: local('Cabin Condensed'), local('CabinCondensed'), url(Cabin.woff) format('woff');
+  src: local('Cabin Condensed'), local('CabinCondensed'), url(resources/Cabin.woff) format('woff');
 }
 @font-face {
   font-family: 'Dosis';
   font-style: normal;
   font-weight: 400;
-  src: local('Dosis Regular'), local('Dosis-Regular'), url(Dosis.woff) format('woff');
+  src: local('Dosis Regular'), local('Dosis-Regular'), url(resources/sDosis.woff) format('woff');
 }
 #head {
     border:0px solid black;
