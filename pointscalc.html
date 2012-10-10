@@ -2,46 +2,13 @@
 <head>
 <title>Points Calculator. | Montro</title>
 <link rel="stylesheet" href="style.css" type="text/css">
-<style type="text/css">
-#points {
-    margin: 0 auto;
-	border: 1px solid black;
-	padding: 20px;
-	padding-top: 7px;
-	padding-bottom: 7px;
-}
-#answers {
-    margin: 0 auto;
-    border: 1px solid black;
-	padding: 20px;
-	padding-top: 7px;
-	padding-bottom: 13px;
-}
-.calculate { 
-	background-color: white; 
-	border:1px solid black;
-	margin-top: 9px;
-	padding: 7px;
-	padding-top:4px;
-	padding-bottom:4px;
-	font-size:15px;
-	font-family: 'Cabin Condensed', sans-serif;
-}
-</style>
 <script type="text/javascript">
 <!--
-function distance() {
-    var x1 = document.getElementById('x1').value;
-    var y1 = document.getElementById('y1').value;
-    var x2 = document.getElementById('x2').value;
-    var y2 = document.getElementById('y2').value;
+function reduce(a,b) {
+    //NOTE TO SELF: GET RATIO.JS
+    // Find GCD
+    alert(gcd(a,b));
     
-    var x = (x2 - x1) * (x2 - x1);
-    alert(x);
-    var y = (y2 - y1) * (x2 - x1);
-    alert(y);
-    var distance = Math.sqrt(Math.abs(x)+(Math.abs(y)));
-    document.getElementById("distance").value = Math.round(dist
 }
 -->
 </script>
@@ -67,18 +34,18 @@ function distance() {
 </tr><td><center><input id="x2" type="text" /><center></td>
 <td><center><input id="y2" type="text" /><center></td>
 </tr><tr><td colspan="2">
-<center><input type="button" class="calculate" value="Calculate." onClick="distance();"/></center>
+<center><input type="button" class="calculate" value="Calculate." onClick="reduce(5,10);"/></center>
 </td></tr></table>
 
 
 <br><center><p style="margin:5px;font-size:16px;">Answers:</p></center>
 <table id="answers"><tr>
-<td><center>Distance</center></td>
-<td><center>Midpoint</center></td></tr>
+<td><center>Distance:</center></td>
+<td><center>Midpoint:</center></td></tr>
 <tr><td><center><input id="distance" type="text" /></center></td>
 <td><center><input id="midpoint" type="text" /></center></td>
-<tr><td><center>Slope</center></td>
-<td><center>Equation</center></td>
+<tr><td><center>Slope:</center></td>
+<td><center>Equation:</center></td>
 </tr><td><center><input id="slope" type="text" /></center></td>
 <td><center><input id="equation" type="text" /></center></td>
 </tr></table>
