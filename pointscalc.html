@@ -4,45 +4,36 @@
 <link rel="stylesheet" href="resources/style.css" type="text/css">
 <script src="resources/library/distance.js" type="text/javascript"></script>
 <script src="resources/library/radsimplify.js" type="text/javascript"></script>
-<script src="resources/Ratio.js" type="text/javascript"></script>
+<script src="resources/library/midpoint.js" type="text/javascript"></script>
+<script src="resources/library/reduce.js" type="text/javascript"></script>
+<script src="resources/library/gcd.js" type="text/javascript"></script>
+<script src="resources/library/slope.js" type="text/javascript"></script>
 <script type="text/javascript">
 <!--
 function calculate() {
 	// Get values
-	/* BLOCK COMMENT: FRACTION SIMPLFYING CODE FROM MONTRO:
-	var Div,frac;
-	Div=1;
-	frac=frac.split('/');
-	for (zxc0=1;zxc0<100;zxc0++){
-	if (frac[0]%zxc0==0&&frac[1]%zxc0==0){
-	Div=zxc0;
-	*/
-    var x1 = document.getElementById('x1').value;
-	var x2 = document.getElementById('x2').value;
-	var y1 = document.getElementById('y1').value;
-	var y2 = document.getElementById('y2').value;
+    var x1 = parseFloat(document.getElementById('x1').value);
+	var x2 = parseFloat(document.getElementById('x2').value);
+	var y1 = parseFloat(document.getElementById('y1').value);
+	var y2 = parseFloat(document.getElementById('y2').value);
     var length = distance(x1, y1, x2, y2);
     var matrixlength = length.split(",");
 	switch (matrixlength[0]) {
 		case 0:
 			length = 0;
 			document.getElementsById('distance').value = 0;
-		case 1:
-				length = "\u221A" + matrixlength[1];
-				document.getElementById('distance').value = length;
 		default:
 			if (matrixlength[1] == 1) {
 				document.getElementById('distance').value = matrixlength[0];
 			}
 			else {
 				length = matrixlength[0] + "\u221A" + matrixlength[1];
-				alert(matrixlength[0]);
-				alert(matrixlength[1]);
 				decvalue = (matrixlength[0] * Math.sqrt(matrixlength[1]));
-				fracvalue = Ratio.parse(decvalue).reduce().toString();
-				document.getElementById('distance').value = length + " (" + (Math.round(decvalue * 100) / 100) + ", " + fracvalue + ")";
+				document.getElementById('distance').value = length + " (" + (Math.round(decvalue * 1000) / 1000) + ")";
 			}
 	}
+	document.getElementById('midpoint').value = midpoint(x1, y1, x2, y2);
+	document.getElementById('slope').value = slope(x1, y1, x2, y2) + " (" + eval(slope(x1, y1, x2, y2)) + ")";
 }
 -->
 </script>
