@@ -1,6 +1,8 @@
 function gcd(a,b) {
-    if (b!=0) {
-        gcd(b,a%b);
-    }
+	while (b!=0) {
+		var c = a % b;
+		a = b;
+		b = c;
+	}
     return a;
 }
