@@ -6,7 +6,7 @@ $x=$xmlDoc.getElementsByTagName('link');
 
 //get the q parameter from URL
 $q=$_GET["q"];
-$length = strlen($q)
+$length = strlen($q);
 if ($length > 0) {
 $hint="";
 for($i=0; $i<($x.length); $i++)
