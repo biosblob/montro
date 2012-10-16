@@ -1,6 +1,6 @@
 <?php
 $xmlDoc=new DOMDocument();
-$xmlDoc.load("links.xml");
+$xmlDoc -> load("links.xml");
 
 $x=$xmlDoc.getElementsByTagName('link');
 
