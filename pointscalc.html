@@ -38,7 +38,7 @@ function calculate() {
 	document.getElementById('slope').value = slope(x1, y1, x2, y2) + " (" + eval(slope(x1, y1, x2, y2)) + ")";
 	document.getElementById('equation').value = "y = " + slope(x1, y1, x2, y2) + "x + " +  Ratio.parse(equation(x1, y1, x2, y2)).reduce().toString();
 }
--.
+-->
 </script>
 </head>
 <body>
@@ -55,12 +55,12 @@ function calculate() {
 <table id="input"><tr>
 <td><center>X1</center></td>
 <td><center>Y1</center></td></tr>
-<tr><td><center><input id="x1" type="tel" /></center></td>
-<td><center><input id="y1" type="tel" /><center></td>
+<tr><td><center><input id="x1" type="tel" placeholder="X1" /></center></td>
+<td><center><input id="y1" type="tel" placeholder="Y1"/><center></td>
 <tr><td><center>X2</center></td>
 <td><center>Y2</center></td>
-</tr><td><center><input id="x2" type="tel" /><center></td>
-<td><center><input id="y2" type="tel" /><center></td>
+</tr><td><center><input id="x2" type="tel" placeholder="X2"/><center></td>
+<td><center><input id="y2" type="tel" placeholder="Y2" 	/><center></td>
 </tr><tr><td colspan="2">
 <center><input type="button" class="calculate" value="Calculate." onClick="calculate()" /></center>
 </td></tr></table>
@@ -70,12 +70,12 @@ function calculate() {
 <table id="answers"><tr>
 <td><center>Distance:</center></td>
 <td><center>Midpoint:</center></td></tr>
-<tr><td><center><input id="distance" type="text" /></center></td>
-<td><center><input id="midpoint" type="text" /></center></td>
+<tr><td><center><input id="distance" type="text" placeholder="Distance."/></center></td>
+<td><center><input id="midpoint" type="text" placeholder="Midpoint."/></center></td>
 <tr><td><center>Slope:</center></td>
 <td><center>Equation:</center></td>
-</tr><td><center><input id="slope" type="text" /></center></td>
-<td><center><input id="equation" type="text" /></center></td>
+</tr><td><center><input id="slope" type="text" placeholder="Slope."/></center></td>
+<td><center><input id="equation" type="text" placeholder="Equation."/></center></td>
 </tr></table>
 </p>
 <center>
