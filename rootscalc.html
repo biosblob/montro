@@ -2,6 +2,17 @@
 <head>
 <title>Roots Calculator. | Montro</title>
 <link rel="stylesheet" href="resources/style.css" type="text/css">
+<script src="resources/library/radsimplify.js" type="text/javascript"></script>
+<script src="resources/Ratio.js" type="text/javascript"></script>
+<script type="text/javascript">
+function roots(a, b, c) {
+	var discriminant = (b * b) - (4 * a * c);
+	if (discriminant < 0) {
+		var droota = Ratio.parse(-b / 2 * a).reduce().toString();
+		alert(droota);
+	}
+}
+</script>
 </head>
 <body>
 <div id="head">
@@ -24,8 +35,8 @@
 
 <br><center><p style="margin:5px;font-size:16px;">Answers:</p></center>
 <table id="answers"><tr>
-<td><center>[Title Here]:</center></td></tr>
-<tr><td><center><input id="[ID HERE.]" type="text" placeholder="[PLACEHOLDER HERE.]"/></center></td>
+<td><center>Roots:</center></td></tr>
+<tr><td><center><input id="roots" type="text" placeholder="Roots Here."/></center></td>
 </tr></table>
 </p>
 <center>
