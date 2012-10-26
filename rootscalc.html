@@ -6,30 +6,32 @@
 <script src="resources/Ratio.js" type="text/javascript"></script>
 <script type="text/javascript">
 function roots(a, b, c) {
+	var root1;
+	var root2;
 	var discriminant = (b * b) - (4 * a * c);
-    alert(discriminant);
 	if (discriminant < 0) {
 		var droota = Ratio.parse(-b / 2 * a).reduce().toString();
 		alert(droota);
 	}
     else if (discriminant > 0) {
-        root1 = radsimplify(discriminant);
-        var radical = root1.split(",");
+        radical = radsimplify(discriminant);
+        var radical = radical.split(",");
         switch (radical[0]) {
     	case 0:
-			length = 0;
-			document.getElementsById('distance').value = 0;
+			radical = 0;
 		default:
 			if (radical[1] == 1) {
-				document.getElementById('distance').value = radical[0];
+				radical = radical[0];
 			}
 			else {
-				length = radical[0] + "\u221A" + radical[1];
-				decvalue = (radical[0] * Math.sqrt(radical[1]));
-				document.getElementById('distance').value = length + " (" + (Math.round(decvalue * 1000) / 1000) + ")";
+				radical = radical[0] + "\u221A" + radical[1];
 			}
 	}
+	alert("At this stage.")
+	root1 = (b * -1) + " + " + radical + " / " + (2 * a);
+	root2 = (b * -1) + " - " + radical + " / " + (2 * a);
     }
+	return (root1 + ", " + root2);
 }
 </script>
 </head>
