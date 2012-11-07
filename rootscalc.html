@@ -1,47 +1,60 @@
 <html>
 <head>
-<title>Roots Calculator. | Montro</title>
+<title>Root Calculator. | Montro</title>
 <link rel="stylesheet" href="resources/style.css" type="text/css">
 <script src="resources/library/radsimplify.js" type="text/javascript"></script>
 <script src="resources/Ratio.js" type="text/javascript"></script>
 <script type="text/javascript">
+<!--
 function roots(a, b, c) {
-	var rootA;
-	var rootB;
-	var discriminant = (b * b) - (4 * a * c);
-	if (discriminant > 0) {
-	var radical = radsimplify(discriminant);
-	switch (radical[0]) {
-    	case 0:
-			radical = 0;
-		default:
-			if (radical[1] == 1) {
-				radical = radical[0];
-			}
-			else {
-				radical = radical[0] + "\u221A" + radical[1];
-			}
-	}
-	if (a >= 1) {
-		rootA = ((b * -1) + parseFloat(radical)) / (2 * a);
-		rootB = ((b * -1) - parseFloat(radical)) / (2 * a);
-	} else if (a =< 1) {
-		c = a * c;
-		rootA = ((b * -1 + parseFloat(radical) / (2 * a));
-		rootB = ((b * -1) - parseFloat(radical)) / (2 * a);
-		rootA = Ratio.parse(rootA / a).reduce().toString();
-		rootB = Ratio.parse(rootB / a).reduce().toString();
-		if (rootA.indexOf("/1") != -1) {
-			
-		}
-	}
-	} else if (discriminant < 0) {
-		//CALCULATE UNREAL ROOTS
-	} else if (discriminant = 0) {
-		//SINGLE ROOT, DISPLAY IT
-	}
-	
+    var rootA;
+    var rootB;
+    var discriminant = (b * b) - (4 * a * c);
+    if (discriminant > 0) {
+        var sradical = radsimplify(discriminant);
+        alert(sradical);
+        var radical = sradical.split(",");
+        switch (radical[0]) {
+        case 0:
+            alert('Hi');
+            radical = 0;
+            break;
+        default:
+            alert('Hi');
+            if (radical[1] == 1) {
+                radical = radical[0];
+            }
+            else {
+                radical = radical[0] + "\u221A" + radical[1];
+            }
+            break;
+        }
+        alert('Hi');
+        if (a >= 1) {
+            rootA = ((b * -1) + parseFloat(radical)) / (2 * a);
+            rootB = ((b * -1) - parseFloat(radical)) / (2 * a);
+            return(rootA, rootB);
+        } else if (a <= 1) {
+            c = a * c;
+            rootA = ((b * -1) + parseFloat(radical)) / (2 * a);
+            rootB = ((b * -1) - parseFloat(radical)) / (2 * a);
+            rootA = Ratio.parse(rootA / a).reduce().oSttring();
+            rootB = Ratio.parse(rootB / a).reduce().toString();
+            if (rootA.indexOf("/1") !== -1) {
+
+            }
+            return(rootA, rootB);
+        }
+    } else if (discriminant < 0) {
+        //CALCULATE UNREAL ROOTS
+    } else if (discriminant == 0) {
+        alert('Hey!');
+        rootA = (b * -1) / (2 * a);
+        return (rootA);
+    }
+    return (rootA + "," + rootB);
 }
+-->
 </script>
 </head>
 <body>
