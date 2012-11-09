@@ -2,15 +2,18 @@
 <head>
 <title>LA Filler. | Montro</title>
 <link rel="stylesheet" href="resources/style.css" type="text/css">
+<script src="resources/jquery-1.8.2.min.js"></script>
 <style type="text/css">
     #partOfSpeech, #pos { width:144px; }
     #synonyms, #forms { width:170px; }
     #defintion { width:484px; }
 </style>
 <script type="text/javascript">
+
 function define(word) {
-  var jsonString = UrlFetchApp.fetch("http://api.wordnik.com//v4/word.json/" + word + "/definitions?includeRelated=false&includeTags=false&limit=1&sourceDictionaries=webster&useCanonical=false&api_key=cf06c684dccd799f4d0030167b007115ef57402525d6baafc");
-  jsonString = jsonString.getContentText().substr(1).slice(0, -1);
+  var wordScript = document.createElement('SCRIPT');
+  wordScript.src = "http://api.wordnik.com//v4/word.json/" + word + "/definitions?includeRelated=false&includeTags=false&limit=1&sourceDictionaries=webster&useCanonical=false&api_key=cf06c684dccd799f4d0030167b007115ef57402525d6baafc"
+  jsonString = wordScript.substr(1).slice(0, -1);
   var object = Utilities.jsonParse(jsonString);
   for (var i in object) {
     if (i == "text") {
@@ -50,26 +53,10 @@ function forms(word) {
 }
 function display() {
   var lineNumber = 3
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
-  for (lineNumber; lineNumber<22; lineNumber+=6) {
-    SpreadsheetApp.setActiveRange(ss.getSheets()[0].getRange("B" + lineNumber));
-    var word = SpreadsheetApp.getActiveRange().getValue().toLowerCase();
-    
-    //update part of speech
-    SpreadsheetApp.setActiveRange(ss.getSheets()[0].getRange("C" + lineNumber));
-    SpreadsheetApp.getActiveRange().setValue("(" + partofSpeech(word) + "):");
-    //update defintion
-    SpreadsheetApp.setActiveRange(ss.getSheets()[0].getRange("D" + lineNumber));
-    SpreadsheetApp.getActiveRange().setValue(define(word));
-    //update synonym
-    SpreadsheetApp.setActiveRange(ss.getSheets()[0].getRange("B" + (lineNumber + 1)));
-    SpreadsheetApp.getActiveRange().setValue("Syn: " + synonyms(word));
-    //update forms
-    SpreadsheetApp.setActiveRange(ss.getSheets()[0].getRange("D" + (lineNumber + 1)));
-    SpreadsheetApp.getActiveRange().setValue("Other forms: " + forms(word));
-  }
+  var word = document.getElementById("word").value;
+  alert(word);
+  document.getElementById("defintion").value = define(word)
 }
-
 </script>
 </head>
 <body>
@@ -87,7 +74,7 @@ function display() {
 <td><center>Word.</center></td></tr>
 <tr><td><center><input id="word" /></center></td>
 </tr><tr><td colspan="2">
-<center><input type="button" class="calculate" value="Calculate." onClick="calculate()" /></center>
+<center><input type="button" class="calculate" value="Calculate." onClick="display()" /></center>
 </td></tr></table>
 
 
