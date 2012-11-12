@@ -9,17 +9,14 @@
     #defintion { width:484px; }
 </style>
 <script type="text/javascript">
-
 function define(word) {
-  var wordScript = document.createElement('SCRIPT');
-  wordScript.src = "http://api.wordnik.com//v4/word.json/" + word + "/definitions?includeRelated=false&includeTags=false&limit=1&sourceDictionaries=webster&useCanonical=false&api_key=cf06c684dccd799f4d0030167b007115ef57402525d6baafc"
-  jsonString = wordScript.substr(1).slice(0, -1);
-  var object = Utilities.jsonParse(jsonString);
-  for (var i in object) {
-    if (i == "text") {
-      return(object[i]);
-    }
-  }
+  $.getJSON("http://api.wordnik.com//v4/word.json/" + word + "/definitions?includeRelated=false&includeTags=false&limit=1&sourceDictionaries=webster&useCanonical=false&api_key=cf06c684dccd799f4d0030167b007115ef57402525d6baafc", function(data) {
+  console.log(data);
+  var parsed = data.toString().substr(1).slice(0, -1);
+  console.log(parsed.toString())
+  console.log(parsed.word);
+  return parsed.text;
+  });
 }
 function partofSpeech(word) {
   var jsonString = UrlFetchApp.fetch("http://api.wordnik.com//v4/word.json/" + word + "/definitions?includeRelated=false&includeTags=false&limit=1&sourceDictionaries=webster&useCanonical=false&api_key=cf06c684dccd799f4d0030167b007115ef57402525d6baafc");
@@ -54,7 +51,7 @@ function forms(word) {
 function display() {
   var lineNumber = 3
   var word = document.getElementById("word").value;
-  alert(word);
+  console.log(word);
   document.getElementById("defintion").value = define(word)
 }
 </script>
