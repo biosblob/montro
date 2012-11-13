@@ -12,10 +12,8 @@
 function define(word) {
   $.getJSON("http://api.wordnik.com//v4/word.json/" + word + "/definitions?includeRelated=false&includeTags=false&limit=1&sourceDictionaries=webster&useCanonical=false&api_key=cf06c684dccd799f4d0030167b007115ef57402525d6baafc", function(data) {
   console.log(data);
-  var parsed = data.toString().substr(1).slice(0, -1);
-  console.log(parsed.toString())
-  console.log(parsed.word);
-  return parsed.text;
+  return(data[0].text);
+  
   });
 }
 function partofSpeech(word) {
