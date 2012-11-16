@@ -6,15 +6,16 @@
 <style type="text/css">
     #partOfSpeech, #pos { width:144px; }
     #synonyms, #forms { width:170px; }
-    #defintion { width:484px; }
+    #definition { width:484px; }
 </style>
 <script type="text/javascript">
 function define(word) {
-  $.getJSON("http://api.wordnik.com//v4/word.json/" + word + "/definitions?includeRelated=false&includeTags=false&limit=1&sourceDictionaries=webster&useCanonical=false&api_key=cf06c684dccd799f4d0030167b007115ef57402525d6baafc", function(data) {
+  var definition=$.getJSON("http://api.wordnik.com//v4/word.json/" + word + "/definitions?includeRelated=false&includeTags=false&limit=1&sourceDictionaries=webster&useCanonical=false&api_key=cf06c684dccd799f4d0030167b007115ef57402525d6baafc", function(data) {
   console.log(data);
-  return(data[0].text);
-  
+  console.log(data[0].text)
+  return data[0].text;
   });
+  return 
 }
 function partofSpeech(word) {
   var jsonString = UrlFetchApp.fetch("http://api.wordnik.com//v4/word.json/" + word + "/definitions?includeRelated=false&includeTags=false&limit=1&sourceDictionaries=webster&useCanonical=false&api_key=cf06c684dccd799f4d0030167b007115ef57402525d6baafc");
@@ -47,10 +48,8 @@ function forms(word) {
   }
 }
 function display() {
-  var lineNumber = 3
-  var word = document.getElementById("word").value;
-  console.log(word);
-  document.getElementById("defintion").value = define(word)
+  var word = document.getElementById("word").value.toLowerCase().toString()
+  document.getElementById("definition").value = define(word)
 }
 </script>
 </head>
@@ -80,7 +79,7 @@ function display() {
 <td><center><input id="synonyms" type="text" /></center></td>
 <td><center><input id="forms" type="text" /></center></td></tr>
 <tr><td colspan="3"><center>Definition:</center></td></tr>
-<tr><td colspan="3"><center><input id="defintion" type="text"></center></td></tr>
+<tr><td colspan="3"><center><input id="definition" type="text"></center></td></tr>
 </table>
 </p>
 <center>
