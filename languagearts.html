@@ -10,12 +10,10 @@
 </style>
 <script type="text/javascript">
 function define(word) {
-  var definition=$.getJSON("http://api.wordnik.com//v4/word.json/" + word + "/definitions?includeRelated=false&includeTags=false&limit=1&sourceDictionaries=webster&useCanonical=false&api_key=cf06c684dccd799f4d0030167b007115ef57402525d6baafc", function(data) {
-  console.log(data);
-  console.log(data[0].text)
+  $.getJSON("http://api.wordnik.com//v4/word.json/" + word + "/definitions?includeRelated=false&includeTags=false&limit=1&sourceDictionaries=webster&useCanonical=false&api_key=cf06c684dccd799f4d0030167b007115ef57402525d6baafc", function(data) {
+  console.log(data[0].text);
   return data[0].text;
   });
-  return 
 }
 function partofSpeech(word) {
   var jsonString = UrlFetchApp.fetch("http://api.wordnik.com//v4/word.json/" + word + "/definitions?includeRelated=false&includeTags=false&limit=1&sourceDictionaries=webster&useCanonical=false&api_key=cf06c684dccd799f4d0030167b007115ef57402525d6baafc");
