@@ -9,45 +9,54 @@
     #definition { width:484px; }
 </style>
 <script type="text/javascript">
+$.ajaxSetup({
+async: false
+});
 function define(word) {
-  $.getJSON("http://api.wordnik.com//v4/word.json/" + word + "/definitions?includeRelated=false&includeTags=false&limit=1&sourceDictionaries=webster&useCanonical=false&api_key=cf06c684dccd799f4d0030167b007115ef57402525d6baafc", function(data) {
-  console.log(data[0].text);
-  return data[0].text;
+    try {
+    var definition;
+    $.getJSON("http://api.wordnik.com//v4/word.json/" + word + "/definitions?includeRelated=false&includeTags=false&limit=1&sourceDictionaries=webster&useCanonical=false&api_key=cf06c684dccd799f4d0030167b007115ef57402525d6baafc", function(data) {
+    definition = data[0].text;
   });
+  return definition;
+    }
+    catch(error) { return "n/a."}
 }
 function partofSpeech(word) {
-  var jsonString = UrlFetchApp.fetch("http://api.wordnik.com//v4/word.json/" + word + "/definitions?includeRelated=false&includeTags=false&limit=1&sourceDictionaries=webster&useCanonical=false&api_key=cf06c684dccd799f4d0030167b007115ef57402525d6baafc");
-  jsonString = jsonString.getContentText().substr(1).slice(0, -1);
-  var object = Utilities.jsonParse(jsonString);
-  for (var i in object) {
-    if (i == "partOfSpeech") {
-      return(object[i]);
-    }
-  }
+    try {
+    var partofSpeech;
+    $.getJSON("http://api.wordnik.com//v4/word.json/" + word + "/definitions?includeRelated=false&includeTags=false&limit=1&sourceDictionaries=webster&useCanonical=false&api_key=cf06c684dccd799f4d0030167b007115ef57402525d6baafc", function(data) {
+        partofSpeech = data[0].partOfSpeech;
+    });
+    return partofSpeech;
+    } catch(error) { return "n/a." }
 }
 function synonyms(word) {
-  var jsonString = UrlFetchApp.fetch("http://api.wordnik.com//v4/word.json/" + word + "/relatedWords?limitPerRelationshipType=3&relationshipTypes=synonym&useCanonical=false&api_key=cf06c684dccd799f4d0030167b007115ef57402525d6baafc");
-  jsonString = jsonString.getContentText().substr(1).slice(0, -1);
-  var object = Utilities.jsonParse(jsonString);
-  for (var i in object) {
-    if (i == "words") {
-      return(object[i].toString().replace(/,/g, ", "));
-    }
-  }
+    try {
+    var synonyms;
+    $.getJSON("http://api.wordnik.com//v4/word.json/" + word + "/relatedWords?limitPerRelationshipType=3&relationshipTypes=synonym&useCanonical=false&api_key=cf06c684dccd799f4d0030167b007115ef57402525d6baafc", function(data) {
+        synonyms = data[0].words.join(", ");
+    });
+    return synonyms;
+    } catch(error) { return "n/a."}
 }
 function forms(word) {
-  var jsonString = UrlFetchApp.fetch("http://api.wordnik.com//v4/word.json/" + word + "/relatedWords?limitPerRelationshipType=3&relationshipTypes=form&useCanonical=false&api_key=cf06c684dccd799f4d0030167b007115ef57402525d6baafc");
-  jsonString = jsonString.getContentText().substr(1).slice(0, -1);
-  var object = Utilities.jsonParse(jsonString);
-  for (var i in object) {
-    if (i == "words") {
-      return(object[i].toString().replace(/,/g, ", "));
-    }
-  }
+    try {
+    var forms;
+    $.getJSON("http://api.wordnik.com//v4/word.json/" + word + "/relatedWords?limitPerRelationshipType=3&relationshipTypes=form&useCanonical=false&api_key=cf06c684dccd799f4d0030167b007115ef57402525d6baafc", function(data) {
+        forms = data[0].words.join(", ");
+  });
+  return forms;
+  } catch(error) { return "n/a." }
 }
 function display() {
   var word = document.getElementById("word").value.toLowerCase().toString()
-  document.getElementById("definition").value = define(word)
+
+  
+  document.getElementById("definition").value = define(word);
+  document.getElementById("partOfSpeech").value = partofSpeech(word);
+  document.getElementById("synonyms").value = synonyms(word);
+  document.getElementById("forms").value = forms(word);
 }
 </script>
 </head>
