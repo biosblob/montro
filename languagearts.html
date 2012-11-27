@@ -51,8 +51,6 @@ function forms(word) {
 }
 function display() {
   var word = document.getElementById("word").value.toLowerCase().toString()
-
-  
   document.getElementById("definition").value = define(word);
   document.getElementById("partOfSpeech").value = partofSpeech(word);
   document.getElementById("synonyms").value = synonyms(word);
