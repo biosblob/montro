@@ -6,7 +6,7 @@
 <style type="text/css">
     #partOfSpeech, #pos { width:144px; }
     #synonyms, #forms { width:170px; }
-    #definition { width:484px; }
+    #definition, #sentence { width:484px; }
 </style>
 <script type="text/javascript">
 $.ajaxSetup({
@@ -38,7 +38,7 @@ function synonyms(word) {
         synonyms = data[0].words.join(", ");
     });
     return synonyms;
-    } catch(error) { return "n/a."}
+    } catch(error) { return "n/a." }
 }
 function forms(word) {
     try {
@@ -49,12 +49,22 @@ function forms(word) {
   return forms;
   } catch(error) { return "n/a." }
 }
+function sentence(word) {
+    try {
+        var sentence;
+        $.getJSON("http://api.wordnik.com//v4/word.json/" + word + "/examples?includeDuplicates=false&useCanonical=false&api_key=cf06c684dccd799f4d0030167b007115ef57402525d6baafc", function(data) {
+            sentence = data.examples[0].text;
+  });
+  return sentence;
+  } catch(error) { return "n/a." }
+}
 function display() {
   var word = document.getElementById("word").value.toLowerCase().toString()
   document.getElementById("definition").value = define(word);
   document.getElementById("partOfSpeech").value = partofSpeech(word);
   document.getElementById("synonyms").value = synonyms(word);
   document.getElementById("forms").value = forms(word);
+  document.getElementById("sentence").value = sentence(word);
 }
 </script>
 </head>
@@ -85,6 +95,8 @@ function display() {
 <td><center><input id="forms" type="text" /></center></td></tr>
 <tr><td colspan="3"><center>Definition:</center></td></tr>
 <tr><td colspan="3"><center><input id="definition" type="text"></center></td></tr>
+<tr><td colspan="3"><center>Sample Sentence (beta, use with caution):</center></td></tr>
+<tr><td colspan="3"><center><input id="sentence" type="text"></center></td></tr>
 </table>
 </p>
 <center>
