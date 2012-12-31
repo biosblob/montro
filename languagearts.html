@@ -15,7 +15,7 @@ async: false
 function define(word) {
     try {
     var definition;
-    $.getJSON("http://api.wordnik.com//v4/word.json/" + word + "/definitions?includeRelated=false&includeTags=false&limit=1&sourceDictionaries=webster&useCanonical=false&api_key=cf06c684dccd799f4d0030167b007115ef57402525d6baafc", function(data) {
+    $.getJSON("http://api.wordnik.com//v4/word.json/" + word + "/definitions?includeRelated=false&includeTags=false&limit=1&sourceDictionaries=webster&useCanonical=false", function(data) {
     definition = data[0].text;
   });
   return definition;
@@ -25,7 +25,7 @@ function define(word) {
 function partofSpeech(word) {
     try {
     var partofSpeech;
-    $.getJSON("http://api.wordnik.com//v4/word.json/" + word + "/definitions?includeRelated=false&includeTags=false&limit=1&sourceDictionaries=webster&useCanonical=false&api_key=cf06c684dccd799f4d0030167b007115ef57402525d6baafc", function(data) {
+    $.getJSON("http://api.wordnik.com//v4/word.json/" + word + "/definitions?includeRelated=false&includeTags=false&limit=1&sourceDictionaries=webster&useCanonical=false", function(data) {
         partofSpeech = data[0].partOfSpeech;
     });
     return partofSpeech;
@@ -34,7 +34,7 @@ function partofSpeech(word) {
 function synonyms(word) {
     try {
     var synonyms;
-    $.getJSON("http://api.wordnik.com//v4/word.json/" + word + "/relatedWords?limitPerRelationshipType=3&relationshipTypes=synonym&useCanonical=false&api_key=cf06c684dccd799f4d0030167b007115ef57402525d6baafc", function(data) {
+    $.getJSON("http://api.wordnik.com//v4/word.json/" + word + "/relatedWords?limitPerRelationshipType=3&relationshipTypes=synonym&useCanonical=false", function(data) {
         synonyms = data[0].words.join(", ");
     });
     return synonyms;
@@ -43,7 +43,7 @@ function synonyms(word) {
 function forms(word) {
     try {
     var forms;
-    $.getJSON("http://api.wordnik.com//v4/word.json/" + word + "/relatedWords?limitPerRelationshipType=3&relationshipTypes=form&useCanonical=false&api_key=cf06c684dccd799f4d0030167b007115ef57402525d6baafc", function(data) {
+    $.getJSON("http://api.wordnik.com//v4/word.json/" + word + "/relatedWords?limitPerRelationshipType=3&relationshipTypes=form&useCanonical=false", function(data) {
         forms = data[0].words.join(", ");
   });
   return forms;
@@ -52,7 +52,7 @@ function forms(word) {
 function sentence(word) {
     try {
         var sentence;
-        $.getJSON("http://api.wordnik.com//v4/word.json/" + word + "/examples?includeDuplicates=false&useCanonical=false&api_key=cf06c684dccd799f4d0030167b007115ef57402525d6baafc", function(data) {
+        $.getJSON("http://api.wordnik.com//v4/word.json/" + word + "/examples?includeDuplicates=false&useCanonical=false", function(data) {
             sentence = data.examples[0].text;
   });
   return sentence;
@@ -78,7 +78,7 @@ function display() {
 <br>
 <div id="maincontent">
 <center><p style="font-size:30px;line-height:0px;">LA Filler.</p></center>
-<br><center><p style="margin:5px;font-size:16px;">Enter dictionary word here:</p></center>
+<br><center><p style="margin:5px;font-size:16px;">Enter dictionary word here (Note: Will not work without API Key):</p></center>
 <table id="input"><tr>
 <td><center>Word.</center></td></tr>
 <tr><td><center><input id="word" /></center></td>
